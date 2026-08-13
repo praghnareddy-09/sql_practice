@@ -1,3 +1,5 @@
+
+
                                      ---- SELECT ----
  
 -- Display all employees.
@@ -511,6 +513,23 @@ CASE
 	WHEN age BETWEEN 40 AND 49 THEN '40-49'
 	WHEN age BETWEEN 0 AND 19 THEN 'Not eligible'
 	ELSE 'Senior'
-
 END AS Categorized
 FROM employees 
+
+--Display tax slabs based on salary.
+
+--Categorize attendance.
+
+--Display bonus eligibility.
+SELECT * FROM employees;
+SELECT * FROM projects;
+SELECT * FROM departments;
+
+SELECT 
+    e.employee_id,
+    e.first_name,
+    e.designation,
+	d.department_name
+FROM employees e
+ RIGHT JOIN departments d
+    ON e.department_id = d.department_id;
