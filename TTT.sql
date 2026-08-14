@@ -484,6 +484,7 @@ EXTRACT(DAY FROM joining_date) AS joining_day
 FROM employees;
 
    -------CASE Statement--------
+--Classify salaries as High, Medium or Low.
 SELECT employee_id, first_name || ' ' || last_name AS full_name, salary,
     CASE
         WHEN salary > AVG(salary) OVER () THEN 'High'
