@@ -1,3 +1,4 @@
+
 -- 1. SETUP: CREATE A PRACTICE SCHEMA AND TABLES
 -- ============================================================================
 
@@ -511,3 +512,211 @@ LEFT JOIN products AS p
 LEFT JOIN employees AS e
     ON o.salesperson_id = e.employee_id;
 
+-- ============================================================================
+-- 25. DATE AND TIME FUNCTIONS - POSTGRESQL
+-- ============================================================================
+
+-- PostgreSQL equivalent of GETDATE()
+SELECT
+    order_id,
+    creation_time,
+    DATE '2025-08-20' AS hard_coded,
+    CURRENT_TIMESTAMP AS today
+FROM orders;
+
+-- DATE_TRUNC
+SELECT
+    order_id,
+    creation_time,
+    DATE_TRUNC('year', creation_time) AS year_dt,
+    DATE_TRUNC('day', creation_time) AS day_dt,
+    DATE_TRUNC('minute', creation_time) AS minute_dt
+FROM orders;
+
+-- PostgreSQL equivalent of DATENAME / DATEPART / YEAR / MONTH / DAY
+SELECT
+    order_id,
+    creation_time,
+    TO_CHAR(creation_time, 'Month') AS month_name,
+    TO_CHAR(creation_time, 'Day') AS weekday_name,
+    EXTRACT(DAY FROM creation_time) AS day_number,
+    EXTRACT(YEAR FROM creation_time) AS year_number,
+    EXTRACT(MONTH FROM creation_time) AS month_number,
+    EXTRACT(HOUR FROM creation_time) AS hour_number,
+    EXTRACT(QUARTER FROM creation_time) AS quarter_number,
+    EXTRACT(WEEK FROM creation_time) AS week_number
+FROM orders;
+
+-- Aggregate orders by year
+SELECT
+    DATE_TRUNC('year', creation_time) AS creation,
+    COUNT(*) AS order_count
+FROM orders
+GROUP BY DATE_TRUNC('year', creation_time)
+ORDER BY creation;
+
+-- PostgreSQL equivalent of EOMONTH()
+SELECT
+    order_id,
+    creation_time,
+    (
+        DATE_TRUNC('month', creation_time)
+        + INTERVAL '1 month'
+        - INTERVAL '1 day'
+    )::date AS end_of_month
+FROM orders;
+
+-- How many orders were placed each year?
+SELECT
+    EXTRACT(YEAR FROM order_date)::int AS order_year,
+    COUNT(*) AS total_orders
+FROM orders
+GROUP BY EXTRACT(YEAR FROM order_date)
+ORDER BY order_year;
+
+-- How many orders were placed each month?
+SELECT
+    EXTRACT(MONTH FROM order_date)::int AS order_month,
+    COUNT(*) AS total_orders
+FROM orders
+GROUP BY EXTRACT(MONTH FROM order_date)
+ORDER BY order_month;
+
+-- Friendly month names
+SELECT
+    TO_CHAR(order_date, 'FMMonth') AS order_month,
+    COUNT(*) AS total_orders
+FROM orders
+GROUP BY EXTRACT(MONTH FROM order_date), TO_CHAR(order_date, 'FMMonth')
+ORDER BY EXTRACT(MONTH FROM order_date);
+
+-- Orders placed during February
+SELECT *
+FROM orders
+WHERE EXTRACT(MONTH FROM order_date) = 2;
+
+-- ============================================================================
+-- 26. FORMAT -> PostgreSQL TO_CHAR
+-- ============================================================================
+
+SELECT
+    order_id,
+    creation_time,
+    TO_CHAR(creation_time, 'MM-DD-YYYY') AS usa_format,
+    TO_CHAR(creation_time, 'DD-MM-YYYY') AS euro_format,
+    TO_CHAR(creation_time, 'DD') AS dd,
+    TO_CHAR(creation_time, 'Dy') AS ddd,
+    TO_CHAR(creation_time, 'Day') AS dddd,
+    TO_CHAR(creation_time, 'MM') AS mm,
+    TO_CHAR(creation_time, 'Mon') AS mmm,
+    TO_CHAR(creation_time, 'FMMonth') AS mmmm
+FROM orders;
+
+-- Custom format
+SELECT
+    order_id,
+    creation_time,
+    'Day ' ||
+    TO_CHAR(creation_time, 'Dy Mon') ||
+    ' Q' ||
+    EXTRACT(QUARTER FROM creation_time)::int ||
+    ' ' ||
+    TO_CHAR(creation_time, 'YYYY HH12:MI:SS AM') AS custom_format
+FROM orders;
+
+-- Month + year
+SELECT
+    TO_CHAR(creation_time, 'Mon YY') AS order_date,
+    COUNT(*) AS total_orders
+FROM orders
+GROUP BY TO_CHAR(creation_time, 'Mon YY')
+ORDER BY MIN(creation_time);
+
+-- ============================================================================
+-- 27. CONVERT -> PostgreSQL CAST / ::
+-- ============================================================================
+
+SELECT
+    CAST('123' AS INTEGER) AS string_to_int,
+    CAST('2025-08-20' AS DATE) AS string_to_date,
+    creation_time,
+    CAST(creation_time AS DATE) AS datetime_to_date,
+    TO_CHAR(creation_time, 'MM/DD/YYYY HH24:MI:SS') AS usa_format,
+    TO_CHAR(creation_time, 'DD/MM/YYYY HH24:MI:SS') AS euro_format
+FROM orders;
+
+-- ============================================================================
+-- 28. CAST
+-- ============================================================================
+
+SELECT
+    CAST('123' AS INTEGER) AS string_to_int,
+    CAST(123 AS VARCHAR) AS int_to_string,
+    CAST('2025-08-20' AS DATE) AS string_to_date,
+    CAST('2025-08-20 10:30:00' AS TIMESTAMP) AS string_to_datetime,
+    creation_time,
+    CAST(creation_time AS DATE) AS datetime_to_date
+FROM orders;
+
+-- ============================================================================
+-- 29. DATEADD -> PostgreSQL INTERVAL
+-- ============================================================================
+
+SELECT
+    order_id,
+    order_date,
+    order_date - INTERVAL '10 days' AS ten_days_before,
+    order_date + INTERVAL '3 months' AS three_months_later,
+    order_date + INTERVAL '2 years' AS two_years_later
+FROM orders;
+
+-- DATEDIFF / age of employees
+SELECT
+    employee_id,
+    birth_date,
+    EXTRACT(YEAR FROM AGE(CURRENT_DATE, birth_date))::int AS age
+FROM employees;
+
+-- Average shipping duration in days for each month
+SELECT
+    EXTRACT(MONTH FROM order_date)::int AS order_month,
+    AVG((ship_date - order_date)::numeric) AS avg_ship_days
+FROM orders
+GROUP BY EXTRACT(MONTH FROM order_date)
+ORDER BY order_month;
+
+-- Time gap between each order and previous order
+SELECT
+    order_id,
+    order_date AS current_order_date,
+    LAG(order_date) OVER (ORDER BY order_date) AS previous_order_date,
+    order_date
+        - LAG(order_date) OVER (ORDER BY order_date) AS number_of_days
+FROM orders;
+
+-- ============================================================================
+-- 30. ISDATE -> PostgreSQL DATE VALIDATION
+-- ============================================================================
+
+-- PostgreSQL does not have SQL Server's ISDATE().
+-- For a text value, first check that it has the expected YYYY-MM-DD pattern.
+WITH test_dates(order_date_text) AS (
+    VALUES
+        ('2025-08-20'),
+        ('2025-08-21'),
+        ('2025-08-23'),
+        ('2025-08')
+)
+SELECT
+    order_date_text,
+    CASE
+        WHEN order_date_text ~ '^\d{4}-\d{2}-\d{2}$'
+        THEN 1
+        ELSE 0
+    END AS is_valid_format,
+    CASE
+        WHEN order_date_text ~ '^\d{4}-\d{2}-\d{2}$'
+        THEN order_date_text::date
+        ELSE DATE '9999-01-01'
+    END AS new_order_date
+FROM test_dates;

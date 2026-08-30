@@ -1,0 +1,51 @@
+﻿customer_id,customer_code,customer_name,email,phone,city,state,registration_date
+1,C001,Aarav Sharma,aarav.sharma@email.com,9876500001,Hyderabad,Telangana,10-01-2025
+2,C002,Priya Reddy,priya.reddy@email.com,9876500002,Nellore,Andhra Pradesh,12-01-2025
+3,C003,Rahul Kumar,rahul.kumar@email.com,9876500003,Chennai,Tamil Nadu,15-01-2025
+4,C004,Sneha Patel,sneha.patel@email.com,9876500004,Bengaluru,Karnataka,18-01-2025
+5,C005,Vikram Rao,vikram.rao@email.com,9876500005,Mumbai,Maharashtra,20-01-2025
+6,C006,Ananya Das,ananya.das@email.com,9876500006,Kolkata,West Bengal,22-01-2025
+7,C007,Kiran Naidu,kiran.naidu@email.com,9876500007,Vijayawada,Andhra Pradesh,25-01-2025
+8,C008,Meera Iyer,meera.iyer@email.com,9876500008,Coimbatore,Tamil Nadu,28-01-2025
+9,C009,Rohit Singh,rohit.singh@email.com,9876500009,Delhi,Delhi,01-02-2025
+10,C010,Divya Nair,divya.nair@email.com,9876500010,Kochi,Kerala,03-02-2025
+11,C011,Arjun Mehta,arjun.mehta@email.com,9876500011,Pune,Maharashtra,05-02-2025
+12,C012,Pooja Verma,pooja.verma@email.com,9876500012,Jaipur,Rajasthan,08-02-2025
+13,C013,Sanjay Reddy,sanjay.reddy@email.com,9876500013,Hyderabad,Telangana,10-02-2025
+14,C014,Lakshmi Rao,lakshmi.rao@email.com,9876500014,Nellore,Andhra Pradesh,12-02-2025
+15,C015,Nikhil Gupta,nikhil.gupta@email.com,9876500015,Delhi,Delhi,15-02-2025
+16,C016,Kavya Menon,kavya.menon@email.com,9876500016,Kochi,Kerala,18-02-2025
+17,C017,Manoj Yadav,manoj.yadav@email.com,9876500017,Lucknow,Uttar Pradesh,20-02-2025
+18,C018,Ishita Roy,ishita.roy@email.com,9876500018,Kolkata,West Bengal,22-02-2025
+19,C019,Varun Kapoor,varun.kapoor@email.com,9876500019,Chandigarh,Chandigarh,25-02-2025
+20,C020,Neha Joshi,neha.joshi@email.com,9876500020,Pune,Maharashtra,28-02-2025
+21,C021,Aditya Reddy,aditya.reddy@email.com,9876500021,Hyderabad,Telangana,02-03-2025
+22,C022,Swathi Kumar,swathi.kumar@email.com,9876500022,Vijayawada,Andhra Pradesh,05-03-2025
+23,C023,Ramesh Babu,ramesh.babu@email.com,9876500023,Chennai,Tamil Nadu,08-03-2025
+24,C024,Asha Thomas,asha.thomas@email.com,9876500024,Kochi,Kerala,10-03-2025
+25,C025,Harish Shah,harish.shah@email.com,9876500025,Ahmedabad,Gujarat,12-03-2025
+26,C026,Nandini Reddy,nandini.reddy@email.com,9876500026,Hyderabad,Telangana,15-03-2025
+27,C027,Suresh Naidu,suresh.naidu@email.com,9876500027,Nellore,Andhra Pradesh,18-03-2025
+28,C028,Riya Saxena,riya.saxena@email.com,9876500028,Delhi,Delhi,20-03-2025
+29,C029,Abhishek Mishra,abhishek.mishra@email.com,9876500029,Lucknow,Uttar Pradesh,22-03-2025
+30,C030,Tanvi Kulkarni,tanvi.kulkarni@email.com,9876500030,Pune,Maharashtra,25-03-2025
+31,C031,Deepak Rao,deepak.rao@email.com,9876500031,Bengaluru,Karnataka,28-03-2025
+32,C032,Shreya Pillai,shreya.pillai@email.com,9876500032,Kochi,Kerala,01-04-2025
+33,C033,Akash Mohan,NULL,9876500033,Hyderabad,Telangana,03-04-2025
+34,C034,Bhavya Reddy,,9876500034,Nellore,Andhra Pradesh,05-04-2025
+35,C035,Tarun Khan,tarun.khan@email.com,,Mumbai,Maharashtra,08-04-2025
+36,C036,Anjali Rao,anjali.rao@email.com,9876500036,Chennai,Tamil Nadu,10-04-2025
+37,C037,,NULL,9876500037,Hyderabad,Telangana,12-04-2025
+38,C038,Mohan Reddy,NULL,NULL,Nellore,Andhra Pradesh,15-04-2025
+39,C039,Sahana Gowda,sahana.gowda@email.com,9876500039,Bengaluru,Karnataka,18-04-2025
+40,C040,Ravi Kumar,ravi.kumar@email.com,9876500040,Chennai,Tamil Nadu,20-04-2025
+41,C041,Preethi Rao,preethi.rao@email.com,9876500041,Hyderabad,Telangana,22-04-2025
+42,C042,Naveen Kumar,naveen.kumar@email.com,9876500042,Vijayawada,Andhra Pradesh,25-04-2025
+43,C043,Sowmya Iyer,sowmya.iyer@email.com,9876500043,Coimbatore,Tamil Nadu,28-04-2025
+44,C044,Ajay Singh,ajay.singh@email.com,9876500044,Delhi,Delhi,01-05-2025
+45,C045,Madhavi Patel,madhavi.patel@email.com,9876500045,Ahmedabad,Gujarat,03-05-2025
+46,C046,Rakesh Rao,rakesh.rao@email.com,9876500046,Hyderabad,Telangana,05-05-2025
+47,C047,Keerthi Nair,keerthi.nair@email.com,9876500047,Kochi,Kerala,08-05-2025
+48,C048,,,9876500048,Nellore,Andhra Pradesh,10-05-2025
+49,C049,Gautam Mehta,gautam.mehta@email.com,9876500049,Pune,Maharashtra,12-05-2025
+50,C050,Zoya Ali,zoya.ali@email.com,9876500050,Mumbai,Maharashtra,15-05-2025

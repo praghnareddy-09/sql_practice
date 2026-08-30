@@ -1,6 +1,6 @@
 
 
-                                     ---- SELECT ----
+                              ---- SELECT ----
  
 -- Display all employees.
 SELECT * FROM employees;
@@ -483,7 +483,7 @@ SELECT employee_id, joining_date,
 EXTRACT(DAY FROM joining_date) AS joining_day
 FROM employees;
 
-   -------CASE Statement--------
+                                  ---CASE Statement----
 --Classify salaries as High, Medium or Low.
 SELECT employee_id, first_name || ' ' || last_name AS full_name, salary,
     CASE
@@ -526,11 +526,113 @@ SELECT * FROM employees;
 SELECT * FROM projects;
 SELECT * FROM departments;
 
+SELECT employee_id, first_name, salary, bonus,
+    CASE
+        WHEN bonus > 0 THEN 'Eligible'
+        ELSE 'Not Eligible'
+    END AS bonus_eligibility
+FROM employees;
+
+--Display performance ratings.
+--Convert gender text to codes.
+SELECT 	employee_id, first_name || ' ' || last_name, gender,
+	CASE 
+	     WHEN gender = 'Male' THEN 'M'
+	     WHEN gender = 'Female' THEN 'F'
+	 ELSE 'TG'
+END AS gender_code
+FROM employees;
+--Display department abbreviations.
+SELECT department_name, *,
+    CASE
+        WHEN department_name = 'IT' THEN 'IT'
+        WHEN department_name = 'HR' THEN 'HR'
+        WHEN department_name = 'Finance' THEN 'FIN'
+        WHEN department_name = 'Marketing' THEN 'MKT'
+        WHEN department_name = 'Operations' THEN 'OPS'
+        WHEN department_name = 'Research & Development' THEN 'R&D'
+        ELSE 'null'
+   END AS department_abbreviation
+FROM departments;
+
+                                            --- INNER JOIN --- 
+SELECT * FROM employees;
+SELECT * FROM projects;
+SELECT * FROM departments;
+-- Employee with department.
 SELECT 
-    e.employee_id,
     e.first_name,
-    e.designation,
-	d.department_name
+    d.department_name
 FROM employees e
- RIGHT JOIN departments d
+JOIN departments d
     ON e.department_id = d.department_id;
+-- Employee with salary.
+SELECT first_name, salary
+FROM employees;
+SELECT e.first_name, e.salary
+FROM employees e
+INNER JOIN departments d
+    ON e.department_id = d.department_id;
+-- Customers with orders.
+ 
+-- Products with categories.
+SELECT 
+-- Students with courses.
+-- Employees with projects.
+-- Orders with customer cities.
+-- Books with authors.
+-- Payments with invoices.
+-- Employees with manager names.
+
+                                               --- Subqueries---
+SELECT * FROM employees;
+SELECT * FROM projects;
+SELECT * FROM departments;
+-- 1. Highest salary.
+SELECT salary
+FROM employees
+WHERE salary = (
+    SELECT MAX(salary)
+    FROM employees
+);
+-- 2. Second highest salary.
+SELECT MAX(salary)
+FROM employees
+WHERE salary < (
+    SELECT MAX(salary)
+    FROM employees
+);
+-- 3. Employees above average salary.
+SELECT salary
+FROM employees
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM employees
+);
+-- 4. Employees in largest department.
+SELECT e.*, d.department_name
+FROM employees e
+JOIN departments d
+    ON e.department_id = d.department_id
+WHERE e.department_id = (
+    SELECT department_id
+    FROM employees
+    GROUP BY department_id
+    ORDER BY COUNT(*) DESC
+    LIMIT 1
+);
+-- 5. Departments without employees.
+SELECT *
+FROM departments
+WHERE department_id NOT IN (
+    SELECT department_id
+    FROM employees
+);
+-- 6. Products never sold.
+
+-- 7. Customers without orders.
+
+-- 8. Employees hired after managers.
+-- 9. Minimum salary.
+SELECT salary FROM e
+-- 10. Department with highest average salary.

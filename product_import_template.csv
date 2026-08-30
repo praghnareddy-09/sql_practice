@@ -1,0 +1,11 @@
+name,selling_price,current_stock,purchase_price,description,sku,category,unit,minimum_stock,maximum_stock,gst_rate,hsn_code,vendor_name
+Laptop Dell Inspiron 15,45999,25,38000,"15.6-inch Full HD laptop with Intel i5, 8GB RAM, 512GB SSD",LAP-DI15-001,Electronics,piece,5,100,18,8471,TechMart Suppliers
+Samsung 55-inch Smart TV,34999,12,28500,"4K UHD Smart LED TV with Tizen OS, Dolby Vision",TV-SA55-001,Electronics,piece,3,50,18,8528,ElectroHub Pvt Ltd
+Rice Basmati 5kg,450,150,320,"Premium long-grain basmati rice, aged 1 year",RIC-BAS-5KG-001,Groceries,kg,20,500,0,1006,AgriFresh Traders
+Wheat Flour Aashirvaad 10kg,520,80,400,"Whole wheat atta, finely milled, 10kg pack",FLR-AA10-001,Groceries,kg,15,300,5,1101,FoodMart Distributors
+iPhone 14 128GB,69999,8,58000,"Apple iPhone 14, 6.1-inch Super Retina XDR, A15 Bionic",IPH-14-128-001,Electronics,piece,2,20,18,8517,Apple India Distributors
+T-Shirt Cotton Plain,299,200,180,"100% cotton round-neck T-shirt, available in multiple colors",TSH-COT-PLN-001,Clothing,piece,50,1000,5,6109,FashionWeave Ltd
+Milk Amul Full Cream 1L,65,300,50,"Full cream cow milk, pasteurized, 1L tetra pack",MLK-AM1L-001,Groceries,liter,40,800,5,0401,DairyKing Suppliers
+Earphones Sony Wireless,1599,45,1200,"True wireless earbuds with noise cancellation, 20hr battery",EAR-SO-WL-001,Electronics,piece,10,150,18,8518,AudioTech Vendors
+Jeans Levi's Slim Fit,1999,60,1400,"Slim fit denim jeans, stretch fabric, sizes 28-36",JNS-LV-SF-001,Clothing,piece,15,200,12,6203,DenimPro Traders
+Toothpaste Colgate 200g,95,250,70,"Herbal anticavity toothpaste, 200g tube",TPT-CL200-001,Personal Care,piece,30,600,18,3306,HealthEssentials Ltd

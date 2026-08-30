@@ -1,4 +1,5 @@
 
+
 -- 1.1
 CREATE TABLE employee1 (
     employee_id INT PRIMARY KEY,
