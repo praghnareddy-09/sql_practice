@@ -1,5 +1,4 @@
 
-
                               ---- SELECT ----
  
 -- Display all employees.

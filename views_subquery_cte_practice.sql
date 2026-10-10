@@ -1,3 +1,6 @@
+
+
+
 create schema emp
 CREATE TABLE emp.employees2 (
     emp_id INT PRIMARY KEY,

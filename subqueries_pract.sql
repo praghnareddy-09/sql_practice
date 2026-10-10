@@ -1,5 +1,10 @@
 
 
+
+
+
+
+
 CREATE TABLE employees1 (
     employee_id INT PRIMARY KEY,
     first_name VARCHAR(50),
